@@ -37,30 +37,24 @@ class ExamPage extends StatefulWidget {
 }
 
 class _ExamPageState extends State<ExamPage> {
+  List<Padding> answerResult = [];
+  List<String> Questions = [
+    'كم عدد سور القرآن الكريم؟',
+    'ما هي أوَّل سورةٍ قرآنيَّةٍ نزلت على رسول الله -صلّى الله عليه وسلّم-؟',
+    'ما هي السُّورة التي تعدُّ أمُّ الكتاب؟',
+    'ما هي السُّورة القرآنيَّة التي تخلو من البسملة في بدايتها؟',
+    'ما هي السّورة القرآنية التي شيَّبت رسول الله -صلّى الله عليه وسلّم-؟',
+    'كم مرَّة جاء ذكر الجنَّة في القرآن الكريم؟',
+    'كم هي المدَّة التي استغرقها نزول القرآن الكريم؟',
+    'أين اختبأ رسول الله -عليه السّلام- هو وأبو بكر في طريقه للهجرة؟'
+  ];
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Row(
-          children: [
-            Icon(
-              Icons.thumb_up,
-              color: Colors.green,
-            ),
-            Icon(
-              Icons.thumb_down,
-              color: Colors.red,
-            ),
-            Icon(
-              Icons.thumb_up,
-              color: Colors.green,
-            ),
-            Icon(
-              Icons.thumb_down,
-              color: Colors.red,
-            ),
-          ],
+          children: answerResult,
         ),
         Expanded(
           flex: 5,
@@ -71,7 +65,7 @@ class _ExamPageState extends State<ExamPage> {
                 height: 10,
               ),
               Text(
-                'كم عدد سور القرآن الكريم؟',
+                Questions[0],
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontFamily: 'Amiri',
@@ -86,7 +80,19 @@ class _ExamPageState extends State<ExamPage> {
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  answerResult.add(
+                    Padding(
+                      padding: const EdgeInsets.all(3),
+                      child: Icon(
+                        Icons.thumb_up,
+                        color: Colors.green,
+                      ),
+                    ),
+                  );
+                });
+              },
               child: Text(
                 '124',
                 style: TextStyle(
