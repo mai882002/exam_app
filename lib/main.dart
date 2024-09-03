@@ -38,7 +38,7 @@ class ExamPage extends StatefulWidget {
 
 class _ExamPageState extends State<ExamPage> {
   List<Padding> answerResult = [];
-  List<String> Questions = [
+  List<String> questions = [
     'كم عدد سور القرآن الكريم؟',
     'ما هي أوَّل سورةٍ قرآنيَّةٍ نزلت على رسول الله -صلّى الله عليه وسلّم-؟',
     'ما هي السُّورة التي تعدُّ أمُّ الكتاب؟',
@@ -48,6 +48,31 @@ class _ExamPageState extends State<ExamPage> {
     'كم هي المدَّة التي استغرقها نزول القرآن الكريم؟',
     'أين اختبأ رسول الله -عليه السّلام- هو وأبو بكر في طريقه للهجرة؟'
   ];
+  int questionNumber = 0;
+
+  List<List<String>> answers = [
+    ['120', '124', '121', '125'],
+    ['سورة العلق', 'سورة البقرة', 'سورة الكهف', 'سورة الاخلاص'],
+    ['سورة الطلاق', 'سورة الفاتحة', 'سورة النمل', 'سورة الحجر'],
+    ['سورة الإسراء', 'سورة مريم', 'سورة ال عمران', 'سورة التوبة'],
+    ['سورة الرعد', 'سورة يونس', 'سورة يوسف', 'سورة هود'],
+    ['193', ' 139', '194 ', ' 149'],
+    ['20 ', '21', '22 ', '23'],
+    ['غار جبل أحد', 'غار سلع', 'غار ثور', 'غار حراء'],
+  ];
+
+  // قائمة الصور
+  List<String> images = [
+    'images/pic1.jpg',
+    'images/pic2.jpg',
+    'images/pic3.jpg',
+    'images/pic4.jpg',
+    'images/pic5.jpg',
+    'images/pic6.jpg',
+    'images/pic7.jpg',
+    'images/pic8.jpg',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -60,16 +85,17 @@ class _ExamPageState extends State<ExamPage> {
           flex: 5,
           child: Column(
             children: [
-              Image.asset('images/pic1.jpg'),
+              Image.asset(
+                  images[questionNumber]), // عرض الصورة بناءً على السؤال
               SizedBox(
-                height: 10,
+                height: 12,
               ),
               Text(
-                Questions[0],
+                questions[questionNumber],
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontFamily: 'Amiri',
-                  fontSize: 30,
+                  fontSize: 25,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -82,19 +108,14 @@ class _ExamPageState extends State<ExamPage> {
             child: TextButton(
               onPressed: () {
                 setState(() {
-                  answerResult.add(
-                    Padding(
-                      padding: const EdgeInsets.all(3),
-                      child: Icon(
-                        Icons.thumb_up,
-                        color: Colors.green,
-                      ),
-                    ),
-                  );
+                  questionNumber++;
+                  if (questionNumber >= questions.length) {
+                    questionNumber = 0; // إعادة البدء بعد الانتهاء
+                  }
                 });
               },
               child: Text(
-                '124',
+                answers[questionNumber][0],
                 style: TextStyle(
                   color: Color(0xFF212121),
                   fontSize: 20,
@@ -102,7 +123,7 @@ class _ExamPageState extends State<ExamPage> {
                 ),
               ),
               style: TextButton.styleFrom(
-                backgroundColor: Color(0xFF5d4037), // لون الخلفية
+                backgroundColor: Color(0xFF5d4037),
               ),
             ),
           ),
@@ -111,9 +132,16 @@ class _ExamPageState extends State<ExamPage> {
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  questionNumber++;
+                  if (questionNumber >= questions.length) {
+                    questionNumber = 0;
+                  }
+                });
+              },
               child: Text(
-                '120',
+                answers[questionNumber][1],
                 style: TextStyle(
                   color: Color(0xFF212121),
                   fontSize: 20,
@@ -121,7 +149,7 @@ class _ExamPageState extends State<ExamPage> {
                 ),
               ),
               style: TextButton.styleFrom(
-                backgroundColor: Color(0xFF5d4037), // لون الخلفية
+                backgroundColor: Color(0xFF5d4037),
               ),
             ),
           ),
@@ -130,9 +158,16 @@ class _ExamPageState extends State<ExamPage> {
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  questionNumber++;
+                  if (questionNumber >= questions.length) {
+                    questionNumber = 0;
+                  }
+                });
+              },
               child: Text(
-                '122',
+                answers[questionNumber][2],
                 style: TextStyle(
                   color: Color(0xFF212121),
                   fontSize: 20,
@@ -140,7 +175,7 @@ class _ExamPageState extends State<ExamPage> {
                 ),
               ),
               style: TextButton.styleFrom(
-                backgroundColor: Color(0xFF5d4037), // لون الخلفية
+                backgroundColor: Color(0xFF5d4037),
               ),
             ),
           ),
@@ -149,9 +184,16 @@ class _ExamPageState extends State<ExamPage> {
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  questionNumber++;
+                  if (questionNumber >= questions.length) {
+                    questionNumber = 0;
+                  }
+                });
+              },
               child: Text(
-                '125',
+                answers[questionNumber][3],
                 style: TextStyle(
                   color: Color(0xFF212121),
                   fontSize: 20,
@@ -159,7 +201,7 @@ class _ExamPageState extends State<ExamPage> {
                 ),
               ),
               style: TextButton.styleFrom(
-                backgroundColor: Color(0xFF5d4037), // لون الخلفية
+                backgroundColor: Color(0xFF5d4037),
               ),
             ),
           ),
